@@ -3,11 +3,12 @@ import { Responsive as ResponsiveGridLayout } from "react-grid-layout";
 import { withSize } from "react-sizeme";
 import TopBar from "./TopBar";
 import CurrencyWidget from "./service/Exchange";
-import GeolocaWidget  from "./service/Geolocation";
-import DisplayWeather  from "./service/Weather";
+import GeolocaWidget from "./service/Geolocation";
+import DisplayWeather from "./service/Weather";
 import { CovidCountryWidget, CovidCountryChartWidget, CovidGlobalWidget } from "./service/Covid";
+import GoogleCalendar from "./service/Gmail";
 
-const originalItems = ["a", "b", "c", "d", "e", "f"];
+const originalItems = ["a", "b", "c", "d", "e", "f", "g"];
 
 const initialLayouts = {
   lg: [
@@ -16,7 +17,8 @@ const initialLayouts = {
     { i: "c", x: 4, y: 0, w: 1, h: 4 },
     { i: "d", x: 0, y: 4, w: 2, h: 4 },
     { i: "e", x: 2, y: 1, w: 0, h: 4 },
-    { i: "f", x: 2, y: 1, w: 0, h: 4 }
+    { i: "f", x: 2, y: 1, w: 0, h: 4 },
+    { i: "g", x: 1, y: 1, w: 0, h: 4 }  
   ]
 };
 function Content({ size: { width } }) {
@@ -36,7 +38,7 @@ function Content({ size: { width } }) {
   const onAddItem = (itemId) => {
     setItems([...items, itemId]);
   };
-  
+
   return (
     <>
       <TopBar
@@ -62,43 +64,48 @@ function Content({ size: { width } }) {
             data-grid={{ w: 3, h: 2, x: 0, y: Infinity }}
           >
             {key == "a" ? (
-            < GeolocaWidget 
-              id={key}
-              onRemoveItem={onRemoveItem}
-              backgroundColor="#867ae9"
-              />) : (key == "b" ? (
-                < CovidCountryChartWidget 
+              < GeolocaWidget
                 id={key}
                 onRemoveItem={onRemoveItem}
                 backgroundColor="#867ae9"
-                />) : (key == "c" ? (
-                  < CovidCountryWidget 
+              />) : (key == "b" ? (
+                < CovidCountryChartWidget
                   id={key}
                   onRemoveItem={onRemoveItem}
                   backgroundColor="#867ae9"
-                  />) : (key == "d" ? (
-                    < CovidGlobalWidget 
+                />) : (key == "c" ? (
+                  < CovidCountryWidget
                     id={key}
                     onRemoveItem={onRemoveItem}
                     backgroundColor="#867ae9"
-                    />) :  (key == "e" ? (
-                      < CurrencyWidget 
+                  />) : (key == "d" ? (
+                    < CovidGlobalWidget
                       id={key}
                       onRemoveItem={onRemoveItem}
                       backgroundColor="#867ae9"
-                      />) : 
-                        < DisplayWeather
+                    />) : (key == "e" ? (
+                      < CurrencyWidget
                         id={key}
                         onRemoveItem={onRemoveItem}
                         backgroundColor="#867ae9"
-                        />)
-                      )
-                    )
-                  )
-                }
-              </div>
+                      />) : (key == "f" ? (
+                      < DisplayWeather
+                        id={key}
+                        onRemoveItem={onRemoveItem}
+                        backgroundColor="#867ae9"
+                      />) : 
+                      <GoogleCalendar
+                        id={key}
+                        onRemoveItem={onRemoveItem}
+                        backgroundColor="#867ae9"
+                      />)
+                ))
+              )
             )
-          )
+            }
+          </div>
+        )
+        )
         }
       </ResponsiveGridLayout>
     </>
@@ -112,7 +119,7 @@ function getFromLS(key) {
   if (global.localStorage) {
     try {
       ls = JSON.parse(global.localStorage.getItem("rgl-8")) || {};
-    } catch (e) {}
+    } catch (e) { }
   }
   return ls[key];
 }

@@ -21,7 +21,8 @@ const widgetNames = {
   c: "Covid Country Numbers",
   d: "Covid Global Numbers",
   e: "Currency exchange",
-  f: "Weather"
+  f: "Weather",
+  g: "Calendar"
 };
 
 export default function AddList({
