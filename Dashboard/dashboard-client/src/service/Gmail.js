@@ -17,7 +17,6 @@ function GoogleCalendar() {
         setSignedIn(true);
       })
       .catch(error => console.log(error.message));
-
   }
 
   const responseError = (error) => {

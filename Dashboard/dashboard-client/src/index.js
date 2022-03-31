@@ -12,7 +12,6 @@ import LoginPage from  "./LoginPage";
 import Register from "./Register";
 import Dashboard from "./Dashboard";
 import Error404 from "./404";
-import About from "./About"
 import GoogleCalendar from "./service/Gmail";
 
 ReactDOM.render(
@@ -24,7 +23,6 @@ ReactDOM.render(
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<Register />} />
         <Route path="dashboard" element={<Dashboard />} />
-        <Route path="about.json" element={<About />} />
         <Route path="gmail" element={<GoogleCalendar />} />
         <Route path='*' exact="true" element={<Error404 />} />
       </Routes>
