@@ -1,0 +1,63 @@
+{
+  "client": {
+      "host": "172.18.0.2"
+  },
+  "server": {
+      "current_time": 1573738344,
+      "services": [{
+          "name": "weather",
+          "widgets": [{
+              "name": "DisplayWeather",
+              "description": "Display temperature for a city.",
+              "params": [{
+                  "name": "cityWeather",
+                  "type": "string"
+              }]
+          }]
+      }, {
+          "name": "Covid",
+          "widgets": [{
+              "name": "CovidCountryWidget",
+              "description": "Display number of covid infection for a country.",
+              "params": [{
+                  "name": "InfectionCountry",
+                  "type": "integer"
+              }]
+          }, {
+              "name": "CovidCountryChartWidget",
+              "description": "Display charts for covid infection for a country",
+              "params": [{
+                  "name": "chart",
+                  "type": "integer"
+              }]
+          }, {
+              "name": "CovidGlobalWidget",
+              "description": "Display number of covid infection worldwide",
+              "params": [{
+                  "name": "InfectionCountry",
+                  "type": "integer"
+              }]
+          }]
+      }, {
+          "name": "Currency",
+          "widgets": [{
+              "name": "CurrencyWidget",
+              "description": "Get currency exchange for all currencies",
+              "params": [{
+                  "name": "CurrencyExchange",
+                  "type": "integer"
+              }]
+          }]
+      }, {
+          "name": "Geolocation",
+          "widgets": [{
+              "name": "GeolocaWidget",
+              "description": "Get location infos of device",
+              "params": [{
+                  "name": "Geoloca",
+                  "type": "integer"
+              }]
+          }]
+      }]
+  }
+}
