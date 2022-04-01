@@ -1,10 +1,9 @@
 const router = require('express').Router();
 const { google } = require('googleapis');
-var ip = require("ip");
 
 const GOOGLE_CLIENT_ID = '586680212360-rtc6o4nre05vi4fl9v53iuq2cdng1ai9.apps.googleusercontent.com'
 const GOOGLE_CLIENT_SECRET = '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'
-const REFRESH_TOKEN = '1//09smL9xadwR22CgYIARAAGAkSNwF-L9Ir4mp5lsZAAePeXmZHUqGheZTzd1Q6vB_QqHK718mObZRsypakPq35tp55YfL8MfHnHTE'
+const REFRESH_TOKEN = "1//09LoISRrzm2XeCgYIARAAGAkSNwF-L9IrKGdQle_P1p7x13jm_FM5_aq0YaGFqzf77hEfJ2oJcHcG5Yzz6wJqjBmQHNroplr3zTk"
 
 const oauth2Client = new google.auth.OAuth2(
   GOOGLE_CLIENT_ID,
@@ -24,84 +23,6 @@ router.post('/create-tokens', async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-})
-
-router.get('/about.json', function (req, res) {
-  var time = (new Date).getTime()
-  res.json({
-    "client": {
-      "host": ip.address(),
-    },
-    "server": {
-      "current_time": time,
-      "services": [{
-        "name": "weather",
-        "widgets": [{
-          "name": "DisplayWeather",
-          "description": "Display temperature for a city.",
-          "params": [{
-            "name": "cityWeather",
-            "type": "string"
-          }]
-        }]
-      }, {
-        "name": "Covid",
-        "widgets": [{
-          "name": "CovidCountryWidget",
-          "description": "Display number of covid infection for a country.",
-          "params": [{
-            "name": "InfectionCountry",
-            "type": "integer"
-          }]
-        }, {
-          "name": "CovidCountryChartWidget",
-          "description": "Display charts for covid infection for a country",
-          "params": [{
-            "name": "chart",
-            "type": "integer"
-          }]
-        }, {
-          "name": "CovidGlobalWidget",
-          "description": "Display number of covid infection worldwide",
-          "params": [{
-            "name": "InfectionCountry",
-            "type": "integer"
-          }]
-        }]
-      }, {
-        "name": "Currency",
-        "widgets": [{
-          "name": "CurrencyWidget",
-          "description": "Get currency exchange for all currencies",
-          "params": [{
-            "name": "CurrencyExchange",
-            "type": "integer"
-          }]
-        }]
-      }, {
-        "name": "Currency",
-        "widgets": [{
-          "name": "CurrencyWidget",
-          "description": "Get currency exchange for all currencies",
-          "params": [{
-            "name": "CurrencyExchange",
-            "type": "integer"
-          }]
-        }]
-      },
-      {
-        "name": "GoogleCalendar",
-        "widgets": [{
-          "name": "calendarWidget",
-          "description": "create event in google calendar",
-          "params": [{
-            "name": "Calendar",
-            "type": "string"
-          }]
-        }]
-      }]
-    }
-  })
 })
 
 
