@@ -1,0 +1,35 @@
+version: '3.2'
+services:
+  webserver:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.server
+    volumes:
+
+      - ./backend:/app
+      - node_modules_server:/app/node_modules
+    ports:
+      - '8080:8080'
+    restart: on-failure
+
+  webclient: 
+    build:
+      context: ./dashboard-client
+      dockerfile: Dockerfile.client
+    volumes:
+      - ./dashboard-client:/app
+      - node_modules_client:/app/node_modules
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    depends_on:
+      - webserver
+
+networks:
+  backend: 
+    driver: bridge
+
+volumes:
+  node_modules_server:
+  node_modules_client:
